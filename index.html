@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cycle-Logic — Premium Cycling | Edmonton</title>
+  <meta name="description" content="Edmonton's premier cycling destination. 40+ years of expertise. Italian racing bikes, bike fits, spin classes & club rides." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0d0d0d;
+      --white: #f9f7f4;
+      --off-white: #f0ede8;
+      --mid: #b0a898;
+      --accent: #c8371a;
+      --accent-dark: #9e2a13;
+      --text: #1a1a1a;
+      --text-muted: #6b6460;
+      --border: rgba(0,0,0,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      height: 68px;
+      background: rgba(249,247,244,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.5px;
+      color: var(--text-muted); text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      border: none; padding: 9px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      margin-top: 68px;
+      height: calc(100vh - 68px);
+      min-height: 580px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 3rem;
+      background: var(--black);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--mid); }
+
+    .hero-sub {
+      font-size: 15px; font-weight: 300;
+      color: var(--mid); max-width: 380px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      border: none; padding: 13px 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-dark); }
+
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 13px 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+    .hero-image {
+      position: relative; overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .hero-image img {
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.75;
+    }
+
+    .hero-image .placeholder-img {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 50%, #1a1a1a 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .hero-image .placeholder-img svg { opacity: 0.2; }
+    .hero-image .placeholder-img span {
+      font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.2);
+    }
+
+    /* ── BRANDS BAR ───────────────────────────────────── */
+    .brands-bar {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.25rem 3rem;
+      display: flex; align-items: center; gap: 2rem;
+      overflow-x: auto;
+    }
+    .brands-bar span {
+      font-size: 10px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+      white-space: nowrap;
+    }
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px !important; font-weight: 600 !important;
+      letter-spacing: 1.5px !important;
+      color: rgba(255,255,255,0.5) !important;
+      transition: color 0.2s;
+      cursor: default;
+    }
+    .brand-name:hover { color: rgba(255,255,255,0.85) !important; }
+    .brand-sep { color: rgba(255,255,255,0.1) !important; font-size: 14px !important; }
+
+    /* ── SECTIONS ─────────────────────────────────────── */
+    section { padding: 6rem 3rem; }
+    .section-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600; line-height: 1.1;
+      letter-spacing: -0.3px;
+      margin-bottom: 1.25rem;
+    }
+    .section-sub {
+      font-size: 15px; font-weight: 300;
+      color: var(--text-muted); max-width: 540px;
+      line-height: 1.8;
+    }
+
+    /* ── ABOUT ─────────────────────────────────────────── */
+    .about { background: var(--off-white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 2.5rem;
+    }
+    .stat {
+      background: var(--off-white);
+      padding: 1.5rem;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 600;
+      line-height: 1; color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-size: 12px; font-weight: 400;
+      color: var(--text-muted); letter-spacing: 0.3px;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--accent);
+      z-index: 0;
+    }
+    .img-placeholder {
+      position: relative; z-index: 1;
+      background: #d4cfc9;
+      aspect-ratio: 4/5;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+    }
+    .img-placeholder svg { opacity: 0.3; }
+    .img-placeholder span {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    /* ── SERVICES ──────────────────────────────────────── */
+    .services { background: var(--white); }
+    .services-header {
+      max-width: 1100px; margin: 0 auto 3.5rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: var(--off-white); }
+    .service-icon {
+      width: 44px; height: 44px;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 14px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.7;
+    }
+    .service-detail {
+      margin-top: 1rem;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.5px; color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    /* ── BIKES ─────────────────────────────────────────── */
+    .bikes { background: var(--black); }
+    .bikes .section-label { color: var(--mid); }
+    .bikes .section-title { color: var(--white); }
+    .bikes .section-sub { color: var(--mid); }
+    .bikes-header {
+      max-width: 1100px; margin: 0 auto 3.5rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .bikes-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .bike-card {
+      background: #111;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .bike-card:hover { background: #1a1a1a; }
+    .bike-img-placeholder {
+      width: 100%; aspect-ratio: 1;
+      background: #1e1e1e;
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .bike-img-placeholder svg { opacity: 0.15; }
+    .bike-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600;
+      color: var(--white); margin-bottom: 0.25rem;
+      letter-spacing: 0.5px;
+    }
+    .bike-card p {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      font-weight: 300; letter-spacing: 0.3px;
+    }
+
+    /* ── OWNER ─────────────────────────────────────────── */
+    .owner { background: var(--off-white); }
+    .owner-grid {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 5rem; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .owner-img-placeholder {
+      background: #d4cfc9;
+      aspect-ratio: 3/4;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+      position: relative;
+    }
+    .owner-img-placeholder::after {
+      content: '';
+      position: absolute;
+      bottom: -12px; left: -12px;
+      width: 60%; height: 3px;
+      background: var(--accent);
+    }
+    .owner-img-placeholder span {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .owner-content { padding-top: 0.5rem; }
+    .owner-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 600;
+      line-height: 1.1; margin-bottom: 0.25rem;
+    }
+    .owner-title {
+      font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.75rem;
+    }
+    .owner-bio {
+      font-size: 15px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .owner-achievements {
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .achievement {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .achievement::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--accent); flex-shrink: 0;
+    }
+
+    /* ── HOURS + MAP ───────────────────────────────────── */
+    .location { background: var(--white); padding: 0; }
+    .location-grid { display: grid; grid-template-columns: 1fr 1.6fr; }
+    .location-info {
+      padding: 5rem 3rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hours-table { margin-top: 2rem; width: 100%; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 14px;
+    }
+    .hours-table td:first-child {
+      font-weight: 500; width: 55%;
+    }
+    .hours-table td:last-child {
+      color: var(--text-muted); font-weight: 300;
+    }
+    .closed { color: var(--text-muted) !important; }
+
+    .contact-details { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--text-muted);
+    }
+    .contact-detail a { color: var(--text-muted); text-decoration: none; }
+    .contact-detail a:hover { color: var(--accent); }
+
+    .map-embed { height: 100%; min-height: 480px; }
+    .map-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── CONTACT ───────────────────────────────────────── */
+    .contact-section { background: var(--off-white); }
+    .contact-wrap {
+      max-width: 700px; margin: 0 auto;
+    }
+    .contact-header { margin-bottom: 3rem; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-full { grid-column: 1 / -1; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit-row {
+      margin-top: 1.75rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .form-note {
+      font-size: 12px; color: var(--text-muted); font-weight: 300;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 4rem 3rem 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; max-width: 1100px; margin: 0 auto;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 600;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-about {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.35); line-height: 1.8;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: rgba(255,255,255,0.9); }
+    .footer-col p {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.4); line-height: 1.8;
+    }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding-top: 1.75rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 12px; color: rgba(255,255,255,0.2);
+    }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      font-size: 12px; letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; height: auto; }
+      .hero-text { padding: 4rem 1.5rem; }
+      .hero-image { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image-wrap::before { display: none; }
+      .bikes-grid { grid-template-columns: repeat(3, 1fr); }
+      .owner-grid { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .location-info { padding: 3rem 1.5rem; }
+      .map-embed { min-height: 320px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .bikes-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .brands-bar { padding: 1rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .bikes-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer { padding: 3rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Cycle<span>-</span>Logic</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#bikes">Bikes</a></li>
+      <li><a href="#owner">The Owner</a></li>
+      <li><a href="#location">Visit Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Fit</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Edmonton's Premier Cycling Boutique</p>
+      <h1>Ride like<br/>the <em>Italians</em><br/>intended.</h1>
+      <p class="hero-sub">
+        Hand-picked Italian racing machines. Expert bike fitting. 40+ years of passion for the sport. Welcome to Cycle-Logic.
+      </p>
+      <div class="hero-actions">
+        <a href="#bikes" class="btn-primary">View Bikes</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="placeholder-img">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="20" cy="56" r="16" stroke="white" stroke-width="2"/>
+          <circle cx="60" cy="56" r="16" stroke="white" stroke-width="2"/>
+          <path d="M20 56 L35 24 L60 56" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M35 24 L50 24" stroke="white" stroke-width="2"/>
+          <circle cx="35" cy="24" r="3" fill="white"/>
+        </svg>
+        <span>Hero image — replace with cycling photo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND BAR -->
+  <div class="brands-bar">
+    <span>Our brands</span>
+    <span class="brand-sep">—</span>
+    <span class="brand-name">Pinarello</span>
+    <span class="brand-sep">·</span>
+    <span class="brand-name">Bianchi</span>
+    <span class="brand-sep">·</span>
+    <span class="brand-name">Willier</span>
+    <span class="brand-sep">·</span>
+    <span class="brand-name">Colnago</span>
+    <span class="brand-sep">·</span>
+    <span class="brand-name">T-Lab</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">Est. 1988</p>
+        <h2 class="section-title">More than<br/>just a bike shop.</h2>
+        <p class="section-sub">
+          Cycle-Logic was founded on the belief that the right bike — fitted correctly, built precisely — transforms a rider. For over four decades we've served Edmonton's cycling community with expertise earned through real racing, real coaching, and an obsessive love of the sport.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">Years in the sport</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Elite Italian brands</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100s</div>
+            <div class="stat-label">Bike fits completed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Passion for cycling</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-wrap">
+        <img src="images/images_shop.jpeg" alt="Inside Cycle-Logic" style="position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;display:block;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Full-spectrum cycling expertise.</h2>
+      <p class="section-sub">From your first bike purchase to race-day prep, we cover every aspect of life on the bike.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="13" cy="30" r="10"/>
+          <circle cx="31" cy="30" r="10"/>
+          <path d="M13 30 L22 12 L31 30"/>
+          <path d="M22 12 L28 12"/>
+          <circle cx="22" cy="12" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Premium Bike Sales</h3>
+        <p>Hand-selected Italian racing bikes. We stock Pinarello, Bianchi, Willier, Colnago, and T-Lab — the finest marques in the sport.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 36 L22 8 L36 36"/>
+          <line x1="14" y1="26" x2="30" y2="26"/>
+          <circle cx="22" cy="36" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Professional Bike Fit</h3>
+        <p>A proper fit is the most important investment a cyclist can make. Our process is grounded in decades of coaching and biomechanical understanding.</p>
+        <p class="service-detail">By appointment →</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="6" y="16" width="32" height="22" rx="1"/>
+          <path d="M14 16 L14 10 L30 10 L30 16"/>
+          <line x1="22" y1="22" x2="22" y2="32"/>
+          <line x1="17" y1="27" x2="27" y2="27"/>
+        </svg>
+        <h3>Spin Classes</h3>
+        <p>Winter months only — keep your fitness sharp when the roads are icy. High-energy indoor sessions for all levels.</p>
+        <p class="service-detail">Oct – Mar · Schedule TBC</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 22 Q14 10 22 14 Q30 18 36 8"/>
+          <path d="M8 32 Q14 20 22 24 Q30 28 36 18"/>
+          <circle cx="8" cy="22" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="36" cy="8" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Club Rides</h3>
+        <p>Join the Cycle-Logic community on Tuesday evenings and Saturday mornings through the summer. All levels welcome.</p>
+        <p class="service-detail">Tue &amp; Sat · May – Sep</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M10 34 L10 18 L22 8 L34 18 L34 34"/>
+          <rect x="17" y="24" width="10" height="10"/>
+        </svg>
+        <h3>Expert Technical Service</h3>
+        <p>Workshop servicing by people who actually race. From flat repairs to full builds, we treat every bike like our own.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="22" cy="16" r="8"/>
+          <path d="M8 38 C8 30 36 30 36 38"/>
+        </svg>
+        <h3>Coaching &amp; Advice</h3>
+        <p>National-level racing experience you can tap into. Whether it's training plans, gear selection, or event prep — we've been there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIKES -->
+  <section class="bikes" id="bikes">
+    <div class="bikes-header">
+      <div>
+        <p class="section-label">Our Collection</p>
+        <h2 class="section-title" style="color:var(--white)">Italian craftsmanship.<br/>Race-proven machines.</h2>
+      </div>
+      <a href="#contact" class="btn-primary">Enquire About Availability</a>
+    </div>
+    <div class="bikes-grid">
+      <div class="bike-card">
+        <div class="bike-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="10" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <path d="M10 34 L22 14 L38 34" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M22 14 L30 14" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Pinarello</h3>
+        <p>Dogma · Paris · Prince</p>
+      </div>
+      <div class="bike-card">
+        <div class="bike-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="10" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <path d="M10 34 L22 14 L38 34" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M22 14 L30 14" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Bianchi</h3>
+        <p>Oltre · Specialissima</p>
+      </div>
+      <div class="bike-card">
+        <div class="bike-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="10" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <path d="M10 34 L22 14 L38 34" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M22 14 L30 14" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Willier</h3>
+        <p>Filante · Zero SLR</p>
+      </div>
+      <div class="bike-card">
+        <div class="bike-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="10" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <path d="M10 34 L22 14 L38 34" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M22 14 L30 14" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Colnago</h3>
+        <p>V4Rs · G4X · C68</p>
+      </div>
+      <div class="bike-card">
+        <div class="bike-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="10" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <circle cx="38" cy="34" r="8" stroke="white" stroke-width="1.5"/>
+            <path d="M10 34 L22 14 L38 34" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M22 14 L30 14" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>T-Lab</h3>
+        <p>X3 · Custom Titanium</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNER -->
+  <section class="owner" id="owner">
+    <div class="owner-grid">
+      <div class="owner-img-placeholder">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="22" r="10" stroke="#6b6460" stroke-width="1.5"/>
+          <path d="M10 52 C10 38 50 38 50 52" stroke="#6b6460" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span>Owner photo</span>
+      </div>
+      <div class="owner-content">
+        <p class="section-label">Meet the Owner</p>
+        <h2 class="owner-name">Rich Schafenacker</h2>
+        <p class="owner-title">BSc. MBA · Founder &amp; Head Fitter</p>
+        <p class="owner-bio">
+          Rich founded Cycle-Logic in 1988 and has spent over 40 years living and breathing competitive cycling. As a former national-level road and track racer — once a member of the celebrated Proctor Team — he went on to sponsor a squad that podiumed at the World Championships, Commonwealth Games, and PanAm Games.
+        </p>
+        <p class="owner-bio">
+          A self-described diehard racer, Rich has also competed in multiple IronMan events worldwide and represented Canada at the 2017 Masters Track World Championships. His depth of experience — from the saddle, the workshop, and the coaching box — is what makes every bike fit and every recommendation at Cycle-Logic genuinely different.
+        </p>
+        <div class="owner-achievements">
+          <div class="achievement">IronMan Canada, Austria, Coeur d'Alene — multiple years</div>
+          <div class="achievement">IronMan 70.3 World Championships 2015 &amp; 2016</div>
+          <div class="achievement">2017 Masters Track World Championships</div>
+          <div class="achievement">Sponsor of national championship &amp; World Championship podium teams</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION + MAP -->
+  <section class="location" id="location" style="padding:0">
+    <div class="location-grid">
+      <div class="location-info">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">Visit the shop.</h2>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6C3.5 9.5 8 14.5 8 14.5C8 14.5 12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5Z"/>
+              <circle cx="8" cy="6" r="1.5"/>
+            </svg>
+            6507 104 St NW, Edmonton, AB T6H 2L3
+          </div>
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 3.5C2 3.5 3.5 2 5 2C5.5 4 5 5.5 4.5 6C5.5 7.5 8.5 10.5 10 11.5C10.5 11 12 10.5 14 11C14 12.5 12.5 14 12.5 14C8 14 2 8 2 3.5Z"/>
+            </svg>
+            <a href="tel:7804331046">(780) 433-1046</a>
+          </div>
+        </div>
+        <table class="hours-table" style="margin-top:2rem">
+          <tr>
+            <td>Tuesday – Friday</td>
+            <td>11:00 am – 5:30 pm</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>12:00 pm – 5:30 pm</td>
+          </tr>
+          <tr>
+            <td>Sunday – Monday</td>
+            <td class="closed">Closed</td>
+          </tr>
+        </table>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.1!2d-113.4976890!3d53.5016282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a021b4c1234567%3A0x1234567890abcdef!2s6507+104+St+NW%2C+Edmonton%2C+AB+T6H+2L3!5e0!3m2!1sen!2sca!4v1234567890"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Cycle-Logic location map">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="contact-section" id="contact">
+    <div class="contact-wrap">
+      <div class="contact-header">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Let's talk bikes.</h2>
+        <p class="section-sub">Interested in a bike, a fit, or just want some advice? Fill out the form and Rich will get back to you personally.</p>
+      </div>
+
+      <!-- Netlify Forms: add netlify attribute for automatic form handling -->
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first-name" required placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last-name" required placeholder="Smith" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(780) 555-0100" />
+          </div>
+          <div class="form-group form-full">
+            <label for="subject">What can we help with?</label>
+            <select id="subject" name="subject">
+              <option value="">Select a topic…</option>
+              <option value="bike-enquiry">Bike enquiry</option>
+              <option value="bike-fit">Book a bike fit</option>
+              <option value="spin-classes">Spin classes</option>
+              <option value="club-rides">Club rides</option>
+              <option value="service">Workshop / service</option>
+              <option value="other">General question</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what you're looking for…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn-primary">Send Message</button>
+          <span class="form-note">We typically respond within one business day.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Cycle<span>-</span>Logic</div>
+        <p class="footer-about">Edmonton's home for elite Italian road bikes. Built on 40+ years of racing, coaching, and genuine passion for the sport.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#bikes">Bikes</a></li>
+          <li><a href="#owner">The Owner</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Bike Sales</a></li>
+          <li><a href="#services">Bike Fits</a></li>
+          <li><a href="#services">Spin Classes</a></li>
+          <li><a href="#services">Club Rides</a></li>
+          <li><a href="#services">Workshop</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>6507 104 St NW<br/>Edmonton, AB T6H 2L3</p>
+        <p style="margin-top:0.75rem"><a href="tel:7804331046" style="color:rgba(255,255,255,0.4);text-decoration:none">(780) 433-1046</a></p>
+        <p style="margin-top:0.5rem;font-size:12px;color:rgba(255,255,255,0.25)">Tue–Fri 11–5:30<br/>Sat 12–5:30</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Cycle-Logic. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/9thstcyclelogic/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/ninthstreet_cyclelogic/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
