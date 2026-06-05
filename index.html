@@ -883,29 +883,6 @@
           <span class="form-note" id="statusMessage">We typically respond within one business day.</span>
         </div>
       </form>
-
-      <script type="text/javascript">
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-          event.preventDefault();
-          
-          const statusMessage = document.getElementById('statusMessage');
-          statusMessage.textContent = 'Sending...';
-          
-          emailjs.sendForm('service_bttof6f', 'template_ifgycxz', this)
-            .then(function(response) {
-              statusMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
-              statusMessage.style.color = '#51D335';
-              document.getElementById('contactForm').reset();
-              setTimeout(function() {
-                statusMessage.textContent = 'We typically respond within one business day.';
-                statusMessage.style.color = '';
-              }, 5000);
-            }, function(error) {
-              statusMessage.textContent = '✗ Error sending message. Please try again.';
-              statusMessage.style.color = '#FE45B3';
-            });
-        });
-      </script>
     </div>
   </section>
 
@@ -957,6 +934,27 @@
     (function(){
       emailjs.init("If0qAys4WTmt0WoQq");
     })();
+    
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const statusMessage = document.getElementById('statusMessage');
+      statusMessage.textContent = 'Sending...';
+      
+      emailjs.sendForm('service_bttof6f', 'template_ifgycxz', this)
+        .then(function(response) {
+          statusMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+          statusMessage.style.color = '#51D335';
+          document.getElementById('contactForm').reset();
+          setTimeout(function() {
+            statusMessage.textContent = 'We typically respond within one business day.';
+            statusMessage.style.color = '';
+          }, 5000);
+        }, function(error) {
+          statusMessage.textContent = '✗ Error sending message. Please try again.';
+          statusMessage.style.color = '#FE45B3';
+        });
+    });
   </script>
 
 </body>
