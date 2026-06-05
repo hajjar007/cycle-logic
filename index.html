@@ -931,30 +931,40 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/index.min.js"></script>
   <script type="text/javascript">
-    (function(){
-      emailjs.init("If0qAys4WTmt0WoQq");
-    })();
-    
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const statusMessage = document.getElementById('statusMessage');
-      statusMessage.textContent = 'Sending...';
-      
-      emailjs.sendForm('service_bttof6f', 'template_ifgycxz', this)
-        .then(function(response) {
-          statusMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
-          statusMessage.style.color = '#51D335';
-          document.getElementById('contactForm').reset();
-          setTimeout(function() {
-            statusMessage.textContent = 'We typically respond within one business day.';
-            statusMessage.style.color = '';
-          }, 5000);
-        }, function(error) {
-          statusMessage.textContent = '✗ Error sending message. Please try again.';
-          statusMessage.style.color = '#FE45B3';
+    function initEmailJS() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init("If0qAys4WTmt0WoQq");
+        
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          const statusMessage = document.getElementById('statusMessage');
+          statusMessage.textContent = 'Sending...';
+          
+          emailjs.sendForm('service_bttof6f', 'template_ifgycxz', this)
+            .then(function(response) {
+              statusMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+              statusMessage.style.color = '#51D335';
+              document.getElementById('contactForm').reset();
+              setTimeout(function() {
+                statusMessage.textContent = 'We typically respond within one business day.';
+                statusMessage.style.color = '';
+              }, 5000);
+            }, function(error) {
+              statusMessage.textContent = '✗ Error sending message. Please try again.';
+              statusMessage.style.color = '#FE45B3';
+            });
         });
-    });
+      } else {
+        setTimeout(initEmailJS, 100);
+      }
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEmailJS);
+    } else {
+      initEmailJS();
+    }
   </script>
 
 </body>
