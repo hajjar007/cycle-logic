@@ -456,7 +456,7 @@
       padding: 12px 14px;
       font-family: 'Inter', sans-serif;
       font-size: 14px; font-weight: 300;
-      color: var(--text);
+      color: #001A2B;
       outline: none;
       transition: border-color 0.2s;
       width: 100%;
@@ -464,6 +464,10 @@
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus { border-color: var(--accent); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #76797E;
+    }
     .form-group textarea { resize: vertical; min-height: 130px; }
 
     .form-submit-row {
